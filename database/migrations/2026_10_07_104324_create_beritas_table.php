@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('beritas', function (Blueprint $table) {
             $table->id();
+            $table->string('judul');
+            $table->string('slug');
+            $table->string('penulis');
+            $table->text('konten');
             $table->timestamps();
         });
     }
@@ -20,7 +24,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('beritas');
     }
