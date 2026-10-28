@@ -2,24 +2,23 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use App\Models\Berita;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Membuat 10 berita dummy
+        Berita::factory()->count(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Menambahkan satu berita manual
+        DB::table('beritas')->insert([
+            'judul' => 'Pemerintah Menanam 1 Juta Pohon di Tahun 2024',
+            'slug' => 'pemerintah-menanam-1-juta-pohon-di-tahun-2024',
+            'penulis' => 'Admin',
+            'konten' => 'Pemerintah Indonesia mengumumkan program penanaman 1 juta pohon untuk meningkatkan kualitas udara, mengurangi dampak perubahan iklim, dan melestarikan keanekaragaman hayati.',
         ]);
     }
 }
